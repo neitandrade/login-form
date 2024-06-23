@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --nav: #f8f8f8;
+    --textnav: #222;
+    /* --hover: #f1f1f1; */
+    --hover: #6f32b6;
+}
+
+* {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: .1s linear; /* o '.' antes do tempo, representa um 0*/
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-behavior: smooth; /* SCROLL SUAVE */
+    font-size: 12px;
+}
+
+/* HEADER STYLE */
+
+.header{
+    position: fixed; /* mantém-se index acima de todos os elementos, 
+    percorre toda o documento */
+
+    /* position: relative --> adquire propriedades top, right, bottom e left, 
+    mas ainda ocupando o espaço destinado a ele */
+
+    /* position: absolute --> deixa de fazer parte do fluxo comum do 
+    documento e o espaço destinado a ele deixa de existir no documento */
+
+    margin: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    z-index: 1000;
+    background: var(--nav);
+    padding: 20px;
+    /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5); */ /* x - y - blur */
+    justify-content: space-between;
+}
+
+.header .logo{
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--textnav);
+    padding: 5px; /* Apenas para aumentar a area de contato do cursor */
+
+}
+
+.header .logo:hover{
+    color: var(--hover);
+    transform: translateY(-5px);
+}
+
+.header .logo i{
+    color: #222;
+    padding: 10px;
+}
+
+.header .navbar a{
+    font-size: 15px;
+    margin: 0 20px; /* top/bottom = 0 - right/left = 20px */
+    color: var(--textnav);
+    padding: 5px; /* Apenas para aumentar a area de contato do cursor */
+
+    display:inline-block; 
+    /* PARA TAGS <A>, o parametro translateY não funciona --> TAGS <A> possuem display inline, que não aceita translateY*/
+}
+
+.header .navbar a:hover{
+    color: var(--hover);
+    transform: translateY(-5px);
+}
+
+.header .icons div{
+    font-size: 20px;
+    color: var(--textnav);
+    margin: 0 10px;
+    cursor: pointer;
+    padding: 5px; /* Apenas para aumentar a área de contato do cursor */
+}
+
+.header .icons div:hover{
+    color: var(--hover);
+    transform: translateY(-5px);
+}
+
+#menu-btn{
+    display: none;
+}
+
+
+/* ----------------- MEDIA QUERY RESPONSIVIDADE --------------------- */
+
+@media (max-width: 1050px){
+
+    .navbar{
+        font-size: 2px;
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        background-color: var(--nav);
+        border-top: 0.5px solid var(--textnav);
+        transition: 0.5s;
+    }
+
+    .navcontent{
+        display: flex;
+        margin: 10px 0 auto 0;
+        color: var(--nav);
+        justify-content: center;
+    }
+
+    #menu-btn{
+        display: inline;
+    }
+}
+
+@media (max-width: 690px){
+
+    .navcontent{
+        display: grid;
+        width: fit-content; /* Alinha largura de acordo com conteúdo */
+        transition: 0.5s;
+        flex-direction: column; /* Organiza os elementos em coluna */
+    }
+}
+
+.navbar.active{
+    display: block
+}
